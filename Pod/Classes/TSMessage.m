@@ -77,7 +77,8 @@ __weak static UIViewController *_defaultViewController;
                                buttonTitle:nil
                             buttonCallback:nil
                                 atPosition:TSMessageNotificationPositionTop
-                       canBeDismissedByUser:YES];
+                      canBeDismissedByUser:YES
+                                 textAlign:nil];
 }
 
 + (void)showNotificationInViewController:(UIViewController *)viewController
@@ -85,7 +86,7 @@ __weak static UIViewController *_defaultViewController;
                                 subtitle:(NSString *)subtitle
                                     type:(TSMessageNotificationType)type
                                 duration:(NSTimeInterval)duration
-                     canBeDismissedByUser:(BOOL)dismissingEnabled
+                    canBeDismissedByUser:(BOOL)dismissingEnabled
 {
     [self showNotificationInViewController:viewController
                                      title:title
@@ -97,7 +98,8 @@ __weak static UIViewController *_defaultViewController;
                                buttonTitle:nil
                             buttonCallback:nil
                                 atPosition:TSMessageNotificationPositionTop
-                       canBeDismissedByUser:dismissingEnabled];
+                      canBeDismissedByUser:dismissingEnabled
+                                 textAlign:nil];
 }
 
 + (void)showNotificationInViewController:(UIViewController *)viewController
@@ -115,7 +117,8 @@ __weak static UIViewController *_defaultViewController;
                                buttonTitle:nil
                             buttonCallback:nil
                                 atPosition:TSMessageNotificationPositionTop
-                      canBeDismissedByUser:YES];
+                      canBeDismissedByUser:YES
+                                 textAlign:nil];
 }
 
 
@@ -130,6 +133,7 @@ __weak static UIViewController *_defaultViewController;
                           buttonCallback:(void (^)())buttonCallback
                               atPosition:(TSMessageNotificationPosition)messagePosition
                     canBeDismissedByUser:(BOOL)dismissingEnabled
+                               textAlign:(NSTextAlignment) textAlignment
 {
     // Create the TSMessageView
     TSMessageView *v = [[TSMessageView alloc] initWithTitle:title
@@ -142,7 +146,8 @@ __weak static UIViewController *_defaultViewController;
                                                 buttonTitle:buttonTitle
                                              buttonCallback:buttonCallback
                                                  atPosition:messagePosition
-                                       canBeDismissedByUser:dismissingEnabled];
+                                       canBeDismissedByUser:dismissingEnabled
+                                                  textAlign:textAlignment];
     [self prepareNotificationToBeShown:v];
 }
 

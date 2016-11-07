@@ -192,6 +192,7 @@ static NSMutableDictionary *_notificationDesign;
      buttonCallback:(void (^)())buttonCallback
          atPosition:(TSMessageNotificationPosition)position
 canBeDismissedByUser:(BOOL)dismissingEnabled
+          textAlign:(NSTextAlignment) textAlignment
 {
     NSDictionary *notificationDesign = [TSMessageView notificationDesign];
 
@@ -296,6 +297,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
 
         self.titleLabel.numberOfLines = 0;
         self.titleLabel.lineBreakMode = NSLineBreakByWordWrapping;
+        self.titleLabel.textAlignment = textAlignment;
         [self addSubview:self.titleLabel];
 
         // Set up content label (if set)
@@ -322,7 +324,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
             [self.contentLabel setShadowOffset:self.titleLabel.shadowOffset];
             self.contentLabel.lineBreakMode = self.titleLabel.lineBreakMode;
             self.contentLabel.numberOfLines = 0;
-
+            self.contentLabel.textAlignment = textAlignment;
             [self addSubview:self.contentLabel];
         }
 
@@ -456,6 +458,7 @@ canBeDismissedByUser:(BOOL)dismissingEnabled
                                        screenWidth - padding - self.textSpaceLeft - self.textSpaceRight,
                                        0.0);
     [self.titleLabel sizeToFit];
+    [self.titleLabel setFrame:CGRectMake(self.titleLabel.frame.origin.x, self.titleLabel.frame.origin.y, screenWidth - padding - self.textSpaceLeft - self.textSpaceRight, self.titleLabel.frame.size.height)];
 
     if ([self.subtitle length])
     {
